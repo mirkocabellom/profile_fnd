@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Fonendo - Perfil</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body class="snippet-body">
+        <div class="container-fluid px-1 py-4 mx-auto">
+            <div class="row d-flex justify-content-center">
+                <div class="col-xl-5 col-lg-6 col-md-7">
+                    <div class="card b-0">
+                        <ul id="progressbar" class="text-center">
+                            <li class="active step0" id="step1"></li>
+                            <li class="step0" id="step2"></li>
+                        </ul>
+
+                        <fieldset id="card_datos_personal" class="show">
+                            <div class="form-card">
+                                <h5 class="sub-heading mb-4">Datos Personales</h5>
+
+                                <div class="form-group">
+                                    <label class="form-control-label">Nombres :</label>
+                                    <input type="text" id="fname" name="fname" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label">Apellido Paterno :</label>
+                                    <input type="text" id="lname" name="lname" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label">Apellido Materno :</label>
+                                    <input type="text" id="lname" name="lname" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label">Email :</label>
+                                    <input type="text" id="email" name="email" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label">Profesión :</label>
+                                    <input type="text" id="mob" name="mob" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label">Contraseña:</label>
+                                    <div class="input-group">
+                                        <input type="password" id="pass" name="pass" class="form-control">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="showPassToggle">
+                                                <i class="fas fa-eye" id="eyeIcon"></i>
+                                            </span>
+                                            <span class="input-group-text" id="editPassword">
+                                                <i class="fas fa-pencil-alt" id="eyeIcon"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <button id="btn_grabar" class="btn-block btn-primary mt-3 mb-1 next mt-4" onclick="validate1(0)">Grabar</span></button>
+                            </div>
+                        </fieldset>
+
+                        <fieldset id="card_perfiles">
+                            <div class="form-card">
+                                <h5 class="sub-heading">Perfiles Activos</h5>
+
+                                <div class="row px-1 radio-group">
+                                    <div class="card-block text-center radio selected">
+                                        <div class="image-icon">
+                                            <img class="icon icon1" src="https://i.imgur.com/vZxfo9x.png">
+                                        </div>
+                                        <p class="sub-desc">Ficha Clinica</p>
+                                    </div>
+                                    <div class="card-block text-center radio">
+                                        <div class="image-icon">
+                                            <img class="icon icon1 fit-image" src="https://i.imgur.com/HnX40f4.png">
+                                        </div>
+                                        <p class="sub-desc">Urgencia</p>
+                                    </div>
+                                    <div class="card-block text-center radio">
+                                        <div class="image-icon">
+                                            <img class="icon icon1 fit-image" src="https://i.imgur.com/ynKYPkk.png">
+                                        </div>
+                                        <p class="sub-desc">Atencion Abierta</p>
+                                    </div>
+                                    <div class="card-block text-center radio">
+                                        <div class="image-icon">
+                                            <img class="icon icon1 fit-image" src="https://i.imgur.com/6qK7u8Q.png">
+                                        </div>
+                                        <p class="sub-desc">Interconsulta</p>
+                                    </div>
+                                </div>
+ 
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="js/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="js/profile.js"></script>
+        <script type="text/javascript">
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const passInput = document.getElementById('pass');
+                const eyeIcon = document.getElementById('eyeIcon');
+                const showPassToggle = document.getElementById('showPassToggle');
+
+                showPassToggle.addEventListener('click', function() {
+                    if (passInput.type === 'password') {
+                        passInput.type = 'text';
+                        eyeIcon.classList.remove('fa-eye');
+                        eyeIcon.classList.add('fa-eye-slash');
+                    } else {
+                        passInput.type = 'password';
+                        eyeIcon.classList.remove('fa-eye-slash');
+                        eyeIcon.classList.add('fa-eye');
+                    }
+                });
+
+                const step1 = document.getElementById('step1');
+                const step2 = document.getElementById('step2');
+                const cardDatosPersonal = document.getElementById('card_datos_personal');
+                const cardPerfiles = document.getElementById('card_perfiles');
+
+                step1.addEventListener('click', function() {
+                    cardDatosPersonal.classList.add('show');
+                    cardPerfiles.classList.remove('show');
+
+                    step1.classList.add('active');
+                    step2.classList.remove('active');
+                });
+
+                step2.addEventListener('click', function() {
+                    cardPerfiles.classList.add('show');
+                    cardDatosPersonal.classList.remove('show');
+
+                    step2.classList.add('active');
+                    step1.classList.remove('active');
+                });
+            });
+
+        </script>
+        
+    </body>
+</html>
